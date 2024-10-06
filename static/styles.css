@@ -1,0 +1,365 @@
+/* static/styles.css */
+
+/* Global Styles */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #121212; /* Dark background */
+    color: #E0E0E0;
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(130deg, #1E1E1E, #121212, #1E1E1E);
+    background-size: 400% 400%;
+    animation: gradientBackground 15s ease infinite;
+}
+
+@keyframes gradientBackground {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header, footer {
+    text-align: center;
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 3em;
+    color: #00BFFF; /* Deep Sky Blue */
+    text-shadow: 0 0 10px #00BFFF;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.instructions {
+    max-width: 600px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.instructions h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.instructions p {
+    font-size: 1.2em;
+}
+
+.controls {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 30px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    flex: 1;
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+.input-group input[type="number"] {
+    flex: 2;
+    padding: 10px;
+    background-color: #1A1A1A;
+    border: 2px solid #00BFFF;
+    border-radius: 5px;
+    color: #E0E0E0;
+    font-size: 1em;
+}
+
+.btn {
+    padding: 10px 20px;
+    margin-left: 10px;
+    background-color: #00BFFF;
+    color: #121212;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    text-transform: uppercase;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn:hover {
+    background-color: #009ACD; /* Deeper Sky Blue */
+    transform: scale(1.05);
+}
+
+.btn:disabled {
+    background-color: #555555;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.loading-screen {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100%;
+    max-width: 800px;
+    height: 200px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.character {
+    position: relative;
+    width: 80px;
+    height: 160px;
+    margin: 0 10px;
+    background-color: #1E1E1E;
+    border-radius: 10px;
+    overflow: hidden;
+    transform: translateY(20px);
+    transition: transform 0.5s ease-in-out;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+
+.character.highlight {
+    transform: translateY(0);
+}
+
+.character::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    background-color: #1E1E1E;
+    border-radius: 50%;
+    transform: translateX(-50%);
+}
+
+.character .face {
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.character .face img {
+    width: 60px;
+    height: 60px;
+}
+
+.character .text-bubble {
+    position: absolute;
+    bottom: 170px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    padding: 10px;
+    background-color: rgba(26, 26, 26, 0.9);
+    border: 2px solid #00BFFF;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 0.9em;
+    color: #E0E0E0;
+    display: none;
+    z-index: 10;
+}
+
+.character.highlight .text-bubble {
+    display: block;
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.progress {
+    font-size: 1.5em;
+    color: #00BFFF;
+    text-shadow: 0 0 5px #00BFFF;
+    margin-bottom: 30px;
+}
+
+.transcriptions {
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 30px;
+}
+
+.transcriptions h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.transcription-list {
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: #1A1A1A;
+    padding: 10px;
+    border: 2px solid #00BFFF;
+    border-radius: 5px;
+}
+
+.transcription-list p {
+    margin: 5px 0;
+    font-size: 1em;
+}
+
+.result {
+    text-align: center;
+}
+
+.result h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+footer {
+    flex-shrink: 0;
+    font-size: 0.9em;
+    color: #777777;
+}
+
+:focus {
+    outline: 2px solid #00BFFF;
+    outline-offset: 2px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .loading-screen {
+        flex-wrap: wrap;
+        height: auto;
+    }
+
+    .character {
+        width: 120px;
+        height: 120px;
+        margin: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .controls {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .input-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .input-group label,
+    .input-group input,
+    .input-group textarea,
+    .input-group button {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .btn {
+        margin-left: 0;
+    }
+
+    .progress {
+        font-size: 1em;
+    }
+
+    .result h2 {
+        font-size: 1.5em;
+    }
+}
+
+
+/* Styles for the special message overlay */
+#specialMessageOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;      /* Center vertically */
+    justify-content: center;  /* Center horizontally */
+    background-color: rgba(0, 0, 0, 0.8);  /* Semi-transparent background */
+    z-index: 9999;            /* Ensure it appears above other elements */
+}
+
+/* Styles for the content within the overlay */
+.special-message-content {
+    background-color: #1E1E1E;   /* White background */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;       /* Center text */
+    max-width: 80%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Styles for the text message */
+.special-message-content p {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+/* Styles for the LinkedIn link */
+.special-message-content a {
+    font-size: 1.2em;
+    color: #0077b5;          /* LinkedIn blue color */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Hover effect for the link */
+.special-message-content a:hover {
+    text-decoration: underline;
+}
+
+/* Animation classes */
+.zoom-in {
+    animation: zoomIn 0.5s forwards;
+}
+
+.fade-out {
+    animation: fadeOut 5s forwards;
+}
+
+/* Keyframes for zoom-in animation */
+@keyframes zoomIn {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Keyframes for fade-out animation */
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}

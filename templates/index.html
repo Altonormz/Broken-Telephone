@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Broken Telephone AI </title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <!-- Include Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Broken Telephone AI </h1>
+        </header>
+        <main>
+            <section class="instructions">
+                <h2>How to Play</h2>
+                <p>Record your voice to start the game. The AI will process your input through multiple iterations, transforming it each time. Watch as the characters relay your message and see how it evolves!</p>
+            </section>
+            <section class="controls">
+                <div class="input-group">
+                    <label for="numCharacters">Number of Characters (1-10):</label>
+                    <input type="number" id="numCharacters" value="5" min="1" max="10" aria-label="Number of Characters">
+                </div>
+                <div class="input-group">
+                    <button id="startAudioBtn" class="btn" aria-label="Start Recording">Start Recording</button>
+                    <button id="stopAudioBtn" class="btn" disabled aria-label="Stop Recording">Stop Recording</button>
+                </div>
+            </section>
+            <section id="loadingScreen" class="loading-screen"></section>
+            <section id="progress" class="progress"></section>
+            <section id="transcriptions" class="transcriptions">
+                <h2>Transcriptions:</h2>
+                <div id="transcriptionList" class="transcription-list"></div>
+            </section>
+            <section id="result" class="result">
+                <h2>Final Result:</h2>
+                <p id="finalText"></p>
+            </section>
+        </main>
+        <footer>
+            <p>&copy; 2024 Broken Telephone AI </p>
+        </footer>
+    </div>
+    <script src="/static/app.js"></script>
+</body>
+</html>
