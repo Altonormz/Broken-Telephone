@@ -162,11 +162,11 @@ cython_debug/
 #.idea/
 
 # audio
-.wav
-.mp3
+*.wav
+*.mp3
 
 # characters 
-.svg
+*.svg
 
 # Models
-.pth
+*.pth
