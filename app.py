@@ -54,7 +54,7 @@ async def websocket_endpoint(websocket: WebSocket):
     try:
         # Receive initial data from the client
         data = await websocket.receive_json()
-        iterations_per_character = 25
+        iterations_per_character = 20
         num_characters = int(data.get('num_characters', 5))
         total_iterations = num_characters * iterations_per_character
         mode = 'audio'  # Only audio mode is supported now
@@ -123,8 +123,8 @@ async def websocket_endpoint(websocket: WebSocket):
             # Determine if it's the last iteration for the current character
             if (i + 1) % iterations_per_character == 0:
 
-                # Last character's last iteration, check for 50% chance to add the special message
-                if current_character_index == num_characters - 1 and not special_message_sent and random.randint(1, 2):
+                # Last character's last iteration
+                if current_character_index == num_characters - 1 and not special_message_sent:
                     special_message = "Also, you should check Alon's LinkedIn."
                     current_text += f" {special_message}"  # Add the special message to the text for TTS
                     special_message_sent = True
@@ -162,14 +162,15 @@ async def websocket_endpoint(websocket: WebSocket):
             progress += progress_increment
 
             
-            # Send progress update
-            await websocket.send_json({
-                'event': 'progress',
-                'progress': progress,
-                'iteration': i + 1,
-                'text': current_text,
-                'character_index': current_character_index
-            })
+            if i % iterations_per_character == 0:
+                # Send progress update
+                await websocket.send_json({
+                    'event': 'progress',
+                    'progress': progress,
+                    'iteration': i + 1,
+                    'text': current_text,
+                    'character_index': current_character_index
+                })
             # Check if it's the last iteration for the current character
             if (i + 1) % iterations_per_character == 0:
                 # Prepare to send the audio file to the client
