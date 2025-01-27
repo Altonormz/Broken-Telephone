@@ -3,7 +3,7 @@
 Play the classic "Telephone" game with AI! This project creates a chain of AI-powered speech-to-text and text-to-speech conversions, demonstrating how messages can hilariously transform - just like in the childhood game.
 
 
-[!ALT text](./Broken_Telephone.png)
+![ALT text](./Broken_Telephone.png)
 
 
 ## Overview
