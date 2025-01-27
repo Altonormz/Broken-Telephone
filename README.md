@@ -2,6 +2,10 @@
 
 Play the classic "Telephone" game with AI! This project creates a chain of AI-powered speech-to-text and text-to-speech conversions, demonstrating how messages can hilariously transform - just like in the childhood game.
 
+
+[!ALT text](./Broken_Telephone.png)
+
+
 ## Overview
 
 Broken Telephone AI takes your voice input in English and passes it through multiple AI models, each converting between speech and text. Watch as your original message evolves through each transformation, often with unexpected and entertaining results.
