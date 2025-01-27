@@ -40,3 +40,9 @@ pip install -r requirements.txt
 - Speech-to-text and text-to-speech transformations
 - Visual character representations
 - Entertaining message evolution
+
+
+Disclaimer: 
+This is just a clickbait to see my LinkedIn.
+I made this project after giving the original task of making the "Broken-Telephone AI" to interns, as an opprtuinity to work with STT/TTS models, and API.
+My favorite part was working with them on the data analysis and getting real insights that helped us once we started fine-tuning both models.   
